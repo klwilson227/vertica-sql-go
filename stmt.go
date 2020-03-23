@@ -211,6 +211,7 @@ func (s *stmt) ExecContext(ctx context.Context, args []driver.NamedValue) (drive
 	rows, err := s.QueryContext(ctx, args)
 
 	if err != nil {
+                s.rolledBack = true
 		return driver.ResultNoRows, err
 	}
 
